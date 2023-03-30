@@ -1,47 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<title>Navegación de sitios</title>
 	<style>
+		/* Estilos generales */
 		body {
+			margin: 0;
+			padding: 0;
 			font-family: Arial, sans-serif;
 			background-color: #f5f5f5;
 		}
-		h1 {
-			text-align: center;
-			color: #555;
-		}
-		ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
+
+		/* Encabezado */
+		header {
 			display: flex;
-			justify-content: center;
-		}
-		li {
-			margin: 10px;
-		}
-		a {
-			display: block;
-			padding: 10px;
-			background-color: #555;
-			color: #fff;
-			border-radius: 5px;
-			transition: background-color 0.2s ease-in-out;
-		}
-		a:hover {
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
 			background-color: #333;
+			color: #fff;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 36px;
+		}
+
+		p {
+			margin: 0;
+			font-size: 18px;
+			margin-top: 10px;
+			text-align: center;
+		}
+
+		/* Lista de sitios */
+		.site-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			background-color: #fff;
+			margin: 50px;
+			border-radius: 10px;
+		}
+
+		.site-item {
+			margin: 20px;
+			border: 2px solid #333;
+			border-radius: 5px;
+			transition: all 0.3s ease-in-out;
+			cursor: pointer;
+		}
+
+		.site-item:hover {
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			transform: translateY(-5px);
+		}
+
+		.site-item a {
+			display: block;
+			padding: 20px;
+			color: #333;
+			text-align: center;
+			text-decoration: none;
+			font-size: 24px;
+			font-weight: bold;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.site-item a:hover {
+			background-color: #333;
+			color: #fff;
 		}
 	</style>
 </head>
 <body>
-	<h1>Navegación de sitios</h1>
-	<ul>
-		<li><a href="simpson/index.html">Sitio Simpson</a></li>
-		<li><a href="rectangulo/index.html">Sitio Rectangulo</a></li>
-		<li><a href="montecarlo/index.html">Sitio Montecarlo</a></li>
-        <li><a href="trapecio/index.html">Sitio Trapecio</a></li>
-	</ul>
+	<header>
+		<h1>Navegación de sitios</h1>
+		<p>Seleccione un sitio para continuar</p>
+	</header>
+
+	<div class="site-list">
+		<div class="site-item">
+			<a href="simpson/index.html">Sitio Simpson</a>
+		</div>
+		<div class="site-item">
+			<a href="trapecio/index.html">Sitio Trapecio Rectángulo</a>
+		</div>
+		<div class="site-item">
+			<a href="montecarlo/index.html">Sitio Montecarlo</a>
+		</div>
+	</div>
 </body>
 </html>
