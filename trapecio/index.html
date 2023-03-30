@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método del Trapecio</title>
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Método del Trapecio</h1>
+      <form onsubmit="calcular(); return false;">
+        <label for="funcion">Función:</label>
+        <input type="text" id="funcion" placeholder="ej. x^2">
+        <label for="a">a:</label>
+        <input type="text" id="a" placeholder="Límite inferior">
+        <label for="b">b:</label>
+        <input type="text" id="b" placeholder="Límite superior">
+        <label for="particiones">Particiones:</label>
+        <input type="text" id="particiones" placeholder="Cantidad de particiones">
+        <button type="submit">Calcular</button>
+      </form>
+      <div class="resultado" id="resultado"></div>
+      <canvas class="grafica" id="grafica"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

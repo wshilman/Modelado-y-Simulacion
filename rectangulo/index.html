@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de Integración por Rectángulos</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+	<h1>Calculadora de Integración por Rectángulos</h1>
+	<form>
+		<label for="funcion">Función f(x):</label>
+		<input type="text" id="funcion" name="funcion"><br><br>
+		<label for="a">Límite inferior a:</label>
+		<input type="number" id="a" name="a"><br><br>
+		<label for="b">Límite superior b:</label>
+		<input type="number" id="b" name="b"><br><br>
+		<label for="particiones">Número de particiones:</label>
+		<input type="number" id="particiones" name="particiones"><br><br>
+		<button type="button" onclick="calcular()">Calcular</button>
+	</form>
+	<div id="resultado"></div>
+	<canvas id="grafica"></canvas>
+	<script src="script.js"></script>
+</body>
+</html>
