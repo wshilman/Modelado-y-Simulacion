@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Integral de Monte Carlo</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Integral de Monte Carlo</h1>
-      <form>
-        <label for="function">Función:</label>
-        <input type="text" id="function" name="function">
-        <br>
-        <label for="iterations">Iteraciones:</label>
-        <input type="number" id="iterations" name="iterations">
-        <br>
-        <button type="button" onclick="calculate()">Calcular</button>
-      </form>
-      <div id="plot"></div>
+<head>
+  <title>Integral de Monte Carlo</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center my-5">Integral de Monte Carlo</h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <form>
+          <div class="form-group">
+            <label for="a">Límite inferior:</label>
+            <input type="number" class="form-control" id="a">
+          </div>
+          <div class="form-group">
+            <label for="b">Límite superior:</label>
+            <input type="number" class="form-control" id="b">
+          </div>
+          <div class="form-group">
+            <label for="func">Función:</label>
+            <input type="text" class="form-control" id="func">
+          </div>
+          <div class="form-group">
+            <label for="n">Iteraciones:</label>
+            <input type="number" class="form-control" id="n">
+          </div>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="plot()">Graficar</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+    <div class="row justify-content-center my-5">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div id="plot"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>

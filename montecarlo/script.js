@@ -1,43 +1,24 @@
-function calculate() {
-  const functionString = document.getElementById('function').value;
-  const iterations = document.getElementById('iterations').value;
+function plot() {
+  // Obtener los valores del formulario
+  let a = parseFloat(document.getElementById("a").value);
+  let b = parseFloat(document.getElementById("b").value);
+  let func = document.getElementById("func").value;
+  let n = parseInt(document.getElementById("n").value);
 
-  // Parse the function string to create a JavaScript function
-  const func = new Function('x', `return ${functionString}`);
-
-  // Calculate the integral using Monte Carlo method
+  // Calcular los valores de la integral de Monte Carlo
+  let x = [];
+  let y = [];
   let sum = 0;
-  for (let i = 0; i < iterations; i++) {
-    const x = Math.random();
-    sum += func(x);
+  for (let i = 0; i < n; i++) {
+    let xi = Math.random() * (b - a) + a;
+    let fi = eval(func.replace(/x/g, xi));
+    sum += fi;
+    let yi = sum / (i + 1) * (b - a);
+    x.push(i);
+    y.push(yi);
   }
-  const integral = sum / iterations;
 
-  // Display the integral value
-  const integralElement = document.createElement('p');
-  integralElement.innerHTML = `El valor de la integral es: ${integral}`;
-  document.body.appendChild(integralElement);
-
-  // Create the plot
-  const xValues = Array.from({ length: iterations }, (_, i) => i / iterations);
-  const yValues = xValues.map(func);
-  const trace = {
-    x: xValues,
-    y: yValues,
-    mode: 'markers',
-    marker: {
-      color: 'blue',
-      size: 3
-    }
-  };
-  const layout = {
-    title: 'Gráfico de la función',
-    xaxis: {
-      title: 'x'
-    },
-    yaxis: {
-      title: 'y'
-    }
-  };
-  Plotly.newPlot('plot', [trace], layout);
+  // Graficar los valores en un gráfico de línea
+  let data = [{ x: x, y: y, type: "line" }];
+  Plotly.newPlot("plot", data);
 }
