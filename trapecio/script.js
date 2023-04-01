@@ -1,67 +1,59 @@
-function calcular() {
-	var funcion = document.getElementById("funcion").value;
-	var a = parseFloat(document.getElementById("a").value);
-	var b = parseFloat(document.getElementById("b").value);
-	var n = parseInt(document.getElementById("particiones").value);
+function limpiar() {
+	document.getElementById("a").value = "";
+	document.getElementById("b").value = "";
+	document.getElementById("iteraciones").value = "";
+	document.getElementById("funcion").value = "";
+  }
   
-	if (isNaN(a) || isNaN(b) || isNaN(n)) {
-	  alert("Por favor ingrese valores numéricos válidos.");
-	  return;
+  function trapecio() {
+	let a = parseFloat(document.getElementById("a").value);
+	let b = parseFloat(document.getElementById("b").value);
+	let n = parseFloat(document.getElementById("iteraciones").value);
+	let funcion = document.getElementById("funcion").value;
+  
+	let h = (b - a) / n;
+	let x = a;
+	let suma = 0;
+  
+	for (let i = 1; i < n; i++) {
+	  x += h;
+	  suma += eval(funcion);
 	}
   
-	if (n <= 0) {
-	  alert("El número de particiones debe ser mayor que cero.");
-	  return;
+	let resultado = h / 2 * (eval(funcion) + 2 * suma + eval(funcion.replace(/x/g, b)));
+  
+	let puntosX = [a];
+	let puntosY = [eval(funcion.replace(/x/g, a))];
+  
+	for (let i = 1; i <= n; i++) {
+	  puntosX.push(a + i * h);
+	  puntosY.push(eval(funcion.replace(/x/g, a + i * h)));
 	}
   
-	var h = (b - a) / n;
-	var datos = [];
+	puntosX.push(b);
+	puntosY.push(eval(funcion.replace(/x/g, b)));
   
-	for (var i = 0; i <= n; i++) {
-	  var x = a + i * h;
-	  var y = eval(funcion.replace(/x/g, x));
-	  datos.push({x: x, y: y});
-	}
-  
-	var area = 0;
-  
-	for (var i = 1; i < n; i++) {
-	  area += eval(funcion.replace(/x/g, datos[i].x));
-	}
-  
-	area = h * ((eval(funcion.replace(/x/g, a)) + eval(funcion.replace(/x/g, b))) / 2 + area);
-  
-	document.getElementById("resultado").innerHTML = "El resultado de la integral es: " + area.toFixed(4);
-  
-	var grafica = document.getElementById("grafica").getContext("2d");
-  
-	var datosGrafica = {
-	  datasets: [{
-		data: datos,
-		label: funcion,
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
-		borderWidth: 1,
-		pointRadius: 0
-	  }]
+	let trace = {
+	  x: puntosX,
+	  y: puntosY,
+	  type: "scatter"
 	};
   
-	var opcionesGrafica = {
-	  scales: {
-		xAxes: [{
-		  type: 'linear',
-		  position: 'bottom',
-		  ticks: {
-			stepSize: h
-		  }
-		}]
+	let data = [trace];
+  
+	let layout = {
+	  title: "Grafica de la Funcion",
+	  xaxis: {
+		title: "x"
+	  },
+	  yaxis: {
+		title: "y"
 	  }
 	};
   
-	var graficaTrapecio = new Chart(grafica, {
-	  type: 'line',
-	  data: datosGrafica,
-	  options: opcionesGrafica
-	});
+	Plotly.newPlot("grafica", data, layout);
+  
+	document.getElementById("resultado").innerHTML = "El resultado de la integral es: " + resultado.toFixed(6);
   }
+  
   

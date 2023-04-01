@@ -1,31 +1,39 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método del Trapecio</title>
-    <link rel="stylesheet" href="estilos.css">
-  </head>
-  <body>
-  <a href="../index.html" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Volver</a>
+<html>
 
-    <div class="container">
-      <h1>Método del Trapecio</h1>
-      <form onsubmit="calcular(); return false;">
-        <label for="funcion">Función:</label>
-        <input type="text" id="funcion" placeholder="ej. x^2">
-        <label for="a">a:</label>
-        <input type="text" id="a" placeholder="Límite inferior">
-        <label for="b">b:</label>
-        <input type="text" id="b" placeholder="Límite superior">
-        <label for="particiones">Particiones:</label>
-        <input type="text" id="particiones" placeholder="Cantidad de particiones">
-        <button type="submit">Calcular</button>
-      </form>
-      <div class="resultado" id="resultado"></div>
-      <canvas class="grafica" id="grafica"></canvas>
+<head>
+  <meta charset="utf-8">
+  <title>Integral por Método del Trapecio</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Integral por Método del Trapecio</h1>
+    <div class="input-container">
+      <label for="a">Límite inferior (a):</label>
+      <input type="text" id="a" class="input-field">
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
-  </body>
+    <div class="input-container">
+      <label for="b">Límite superior (b):</label>
+      <input type="text" id="b" class="input-field">
+    </div>
+    <div class="input-container">
+      <label for="iteraciones">Iteraciones:</label>
+      <input type="text" id="iteraciones" class="input-field">
+    </div>
+    <div class="input-container">
+      <label for="funcion">Función f(x):</label>
+      <input type="text" id="funcion" class="input-field">
+    </div>
+    <button onclick="trapecio()">Calcular</button>
+    <button onclick="limpiar()">Limpiar Datos</button>
+    <div id="resultado"></div>
+    <div id="grafica"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
+
